@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Module that run measure the runtime"""
+import asyncio
 from time import perf_counter
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
-async def measure_time(n: int, max_delay: int) -> float:
+def measure_time(n: int, max_delay: int) -> float:
     """
     "Measure the runtime of wait_n."
 
@@ -17,6 +18,6 @@ async def measure_time(n: int, max_delay: int) -> float:
     :return: The total time of execution.
     """
     start = perf_counter()
-    await wait_n(n, max_delay)
+    asyncio.run(wait_n(n, max_delay))
     end = perf_counter()
     return (end - start) / n
