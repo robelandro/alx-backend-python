@@ -15,6 +15,5 @@ async def wait_random(max_delay: int = 10) -> float:
     :return: A coroutine object.
     """
     random_float = random.uniform(0, max_delay)
-    task = asyncio.sleep(random_float)
-    await task
+    await asyncio.sleep(random_float)
     return random_float
